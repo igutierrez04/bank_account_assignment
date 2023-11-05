@@ -18,15 +18,20 @@ class BankAccount:
         else:
             self.balance -= amount
             print(f"You've withdrawn: ${amount}. You're new balance is: ${self.balance}")
+        return self
 
     def display_account_info(self):
         print(f"Balance: ${self.balance}")
+        return self
 
     def yield_interest(self):
-        pass
+        if self.balance > 0:
+            self.balance += self.balance * self.int_rate
+        return self
 
 
 
-ivan = BankAccount()
 
-ivan.display_account_info()
+ivan = BankAccount(0.01)
+
+ivan.yield_interest().display_account_info()
